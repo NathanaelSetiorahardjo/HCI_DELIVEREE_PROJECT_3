@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Dashboard - Deliveree</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="/api/placeholder/180/50" alt="Deliveree Logo">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="#">History</a></li>
+                    <li><a href="#">Rewards</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li>
+                        <div class="user-profile">
+                            <span>Business Account: ABC Corp</span>
+                            <div class="profile-dropdown">
+                                <a href="profile-business.html">Business Profile</a>
+                                <a href="team-management.html">Team Management</a>
+                                <a href="index.html">Log Out</a>
+                            </div>
+                            
+                            <div class="form-nav">
+                                <button type="button" class="btn-next primary-btn">Next: Package Info</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 2: Package Info -->
+                        <div class="form-step" id="step-2">
+                            <div class="form-section">
+                                <h3>Package Details</h3>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="package-type">Package Type</label>
+                                        <select id="package-type">
+                                            <option value="document">Document</option>
+                                            <option value="small-package">Small Package</option>
+                                            <option value="medium-package">Medium Package</option>
+                                            <option value="large-package">Large Package</option>
+                                            <option value="fragile">Fragile Item</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="package-weight">Weight (kg)</label>
+                                        <input type="number" id="package-weight" min="0.1" step="0.1">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="package-length">Length (cm)</label>
+                                        <input type="number" id="package-length" min="1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="package-width">Width (cm)</label>
+                                        <input type="number" id="package-width" min="1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="package-height">Height (cm)</label>
+                                        <input type="number" id="package-height" min="1">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row" id="heavy-cargo-options" style="display: none;">
+                                    <div class="form-group full">
+                                        <label for="cargo-type">Cargo Type</label>
+                                        <select id="cargo-type">
+                                            <option value="furniture">Furniture</option>
+                                            <option value="electronics">Large Electronics</option>
+                                            <option value="construction">Construction Materials</option>
+                                            <option value="industrial">Industrial Equipment</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group full">
+                                        <label for="cargo-details">Additional Cargo Details</label>
+                                        <textarea id="cargo-details" rows="3" placeholder="Describe your cargo in detail"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h3>Additional Services</h3>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" id="service-insurance">
+                                        <span class="checkmark"></span>
+                                        <div class="checkbox-label">
+                                            <div class="label-text">
+                                                <h4>Insurance</h4>
+                                                <p>Protect your shipment up to Rp 10,000,000</p>
+                                            </div>
+                                            <div class="label-price">+ Rp 15,000</div>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" id="service-packaging">
+                                        <span class="checkmark"></span>
+                                        <div class="checkbox-label">
+                                            <div class="label-text">
+                                                <h4>Packaging Service</h4>
+                                                <p>Professional packaging for your items</p>
+                                            </div>
+                                            <div class="label-price">+ Rp 25,000</div>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" id="service-signature">
+                                        <span class="checkmark"></span>
+                                        <div class="checkbox-label">
+                                            <div class="label-text">
+                                                <h4>Signature Required</h4>
+                                                <p>Recipient must sign to receive the package</p>
+                                            </div>
+                                            <div class="label-price">+ Rp 5,000</div>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" id="service-photo">
+                                        <span class="checkmark"></span>
+                                        <div class="checkbox-label">
+                                            <div class="label-text">
+                                                <h4>Proof of Delivery Photo</h4>
+                                                <p>Get a photo upon successful delivery</p>
+                                            </div>
+                                            <div class="label-price">+ Rp 3,000</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-nav">
+                                <button type="button" class="btn-prev secondary-btn">Previous</button>
+                                <button type="button" class="btn-next primary-btn">Next: Contact Details</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3: Contact Details -->
+                        <div class="form-step" id="step-3">
+                            <div class="form-section">
+                                <h3>Sender Details</h3>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="sender-name">Full Name</label>
+                                        <input type="text" id="sender-name" placeholder="Enter sender's full name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sender-phone">Phone Number</label>
+                                        <input type="tel" id="sender-phone" placeholder="e.g. +62 xxx xxx xxxx">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group full">
+                                        <label for="sender-email">Email</label>
+                                        <input type="email" id="sender-email" placeholder="Enter sender's email address">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group full checkbox-container inline-checkbox">
+                                        <input type="checkbox" id="save-sender">
+                                        <span class="checkmark"></span>
+                                        <label for="save-sender">Save sender information for future orders</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h3>Recipient Details</h3>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="recipient-name">Full Name</label>
+                                        <input type="text" id="recipient-name" placeholder="Enter recipient's full name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="recipient-phone">Phone Number</label>
+                                        <input type="tel" id="recipient-phone" placeholder="e.g. +62 xxx xxx xxxx">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group full">
+                                        <label for="recipient-email">Email (Optional)</label>
+                                        <input type="email" id="recipient-email" placeholder="Enter recipient's email address">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group full">
+                                        <label for="delivery-notes">Delivery Notes (Optional)</label>
+                                        <textarea id="delivery-notes" rows="3" placeholder="Add any special instructions for the delivery"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group full checkbox-container inline-checkbox">
+                                        <input type="checkbox" id="save-recipient">
+                                        <span class="checkmark"></span>
+                                        <label for="save-recipient">Save recipient information for future orders</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-nav">
+                                <button type="button" class="btn-prev secondary-btn">Previous</button>
+                                <button type="button" class="btn-next primary-btn">Next: Payment</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 4: Payment -->
+                        <div class="form-step" id="step-4">
+                            <div class="form-section">
+                                <h3>Payment Method</h3>
+                                <div class="payment-options">
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment-method" value="credit-card" checked>
+                                        <div class="option-content">
+                                            <div class="option-icon">
+                                                <i class="fas fa-credit-card"></i>
+                                            </div>
+                                            <div class="option-details">
+                                                <h4>Credit/Debit Card</h4>
+                                                <p>Pay securely with your card</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment-method" value="bank-transfer">
+                                        <div class="option-content">
+                                            <div class="option-icon">
+                                                <i class="fas fa-university"></i>
+                                            </div>
+                                            <div class="option-details">
+                                                <h4>Bank Transfer</h4>
+                                                <p>Pay via bank transfer</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment-method" value="e-wallet">
+                                        <div class="option-content">
+                                            <div class="option-icon">
+                                                <i class="fas fa-wallet"></i>
+                                            </div>
+                                            <div class="option-details">
+                                                <h4>E-Wallet</h4>
+                                                <p>GoPay, OVO, DANA, LinkAja</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment-method" value="cod">
+                                        <div class="option-content">
+                                            <div class="option-icon">
+                                                <i class="fas fa-hand-holding-usd"></i>
+                                            </div>
+                                            <div class="option-details">
+                                                <h4>Cash on Delivery</h4>
+                                                <p>Pay when you receive your item</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                
+                                <!-- Credit Card Form (default shown) -->
+                                <div id="credit-card-form" class="payment-detail-form">
+                                    <div class="form-row">
+                                        <div class="form-group full">
+                                            <label for="card-number">Card Number</label>
+                                            <input type="text" id="card-number" placeholder="xxxx xxxx xxxx xxxx">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="card-name">Cardholder Name</label>
+                                            <input type="text" id="card-name" placeholder="Name as shown on card">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="card-expiry">Expiry Date</label>
+                                            <input type="text" id="card-expiry" placeholder="MM/YY">
+                                        </div>
+                                        <div class="form-group small">
+                                            <label for="card-cvv">CVV</label>
+                                            <input type="text" id="card-cvv" placeholder="XXX">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Bank Transfer Form (hidden by default) -->
+                                <div id="bank-transfer-form" class="payment-detail-form" style="display: none;">
+                                    <div class="bank-details">
+                                        <p>Please transfer to one of these accounts:</p>
+                                        <div class="bank-account">
+                                            <strong>Bank Central Asia</strong><br>
+                                            Account Number: 1234567890<br>
+                                            Account Name: PT Deliveree Indonesia
+                                        </div>
+                                        <div class="bank-account">
+                                            <strong>Bank Mandiri</strong><br>
+                                            Account Number: 0987654321<br>
+                                            Account Name: PT Deliveree Indonesia
+                                        </div>
+                                        <p class="note">Please upload proof of payment after placing your order</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- E-Wallet Form (hidden by default) -->
+                                <div id="e-wallet-form" class="payment-detail-form" style="display: none;">
+                                    <div class="form-row">
+                                        <div class="form-group full">
+                                            <label for="ewallet-type">Select E-Wallet</label>
+                                            <select id="ewallet-type">
+                                                <option value="gopay">GoPay</option>
+                                                <option value="ovo">OVO</option>
+                                                <option value="dana">DANA</option>
+                                                <option value="linkaja">LinkAja</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group full">
+                                            <label for="ewallet-number">Phone Number</label>
+                                            <input type="tel" id="ewallet-number" placeholder="E-Wallet registered phone number">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-section checkbox-terms">
+                                <div class="form-group full checkbox-container inline-checkbox required">
+                                    <input type="checkbox" id="terms-conditions" required>
+                                    <span class="checkmark"></span>
+                                    <label for="terms-conditions">I agree to Deliveree's <a href="#">Terms and Conditions</a></label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-nav">
+                                <button type="button" class="btn-prev secondary-btn">Previous</button>
+                                <button type="submit" class="btn-submit primary-btn">Place Order</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="/api/placeholder/180/50" alt="Deliveree Logo">
+                    <p>The fastest, easier way to book & manage your deliveries.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Resources</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#">Express Delivery</a></li>
+                            <li><a href="#">Scheduled Delivery</a></li>
+                            <li><a href="#">Heavy Cargo</a></li>
+                            <li><a href="#">Business Solutions</a></li>
+                            <li><a href="#">International Shipping</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">FAQs</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h4>Join our newsletter</h4>
+                    <p>Get the latest news and offers</p>
+                    <form class="newsletter-form">
+                        <div class="input-with-btn">
+                            <input type="email" placeholder="Enter your email">
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Deliveree. All rights reserved.</p>
+                <div class="payment-methods">
+                    <img src="/api/placeholder/200/30" alt="Payment Methods">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/forms.js"></script>
+</body>
+</html>
+                        </div>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <main class="dashboard-content">
+        <div class="container">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <h1>Business Dashboard</h1>
+                <div class="dashboard-actions">
+                    <button class="primary-btn"><i class="fas fa-plus"></i> New Delivery</button>
+                    <button class="secondary-btn"><i class="fas fa-file-import"></i> Bulk Order</button>
+                </div>
+            </div>
+
+            <!-- Dashboard Stats -->
+            <div class="business-stats">
+                <div class="stat-card">
+                    <i class="fas fa-truck"></i>
+                    <div class="stat-info">
+                        <h4>Active Deliveries</h4>
+                        <span class="stat-number">12</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-clock"></i>
+                    <div class="stat-info">
+                        <h4>Scheduled</h4>
+                        <span class="stat-number">5</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="stat-info">
+                        <h4>Completed (This Month)</h4>
+                        <span class="stat-number">48</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <div class="stat-info">
+                        <h4>Current Balance</h4>
+                        <span class="stat-number">Rp 2,500,000</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Widgets -->
+            <div class="dashboard-widgets">
+                <!-- Quick Actions Widget -->
+                <div class="widget">
+                    <div class="widget-header">
+                        <h3>Quick Actions</h3>
+                    </div>
+                    <div class="widget-content">
+                        <div class="quick-actions">
+                            <a href="order-form.html?type=express" class="action-card">
+                                <div class="action-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="action-text">
+                                    <h4>Express Delivery</h4>
+                                    <p>Same-day delivery within your city</p>
+                                </div>
+                            </a>
+                            <a href="order-form.html?type=scheduled" class="action-card">
+                                <div class="action-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <div class="action-text">
+                                    <h4>Scheduled Delivery</h4>
+                                    <p>Plan ahead with our scheduled service</p>
+                                </div>
+                            </a>
+                            <a href="order-form.html?type=heavy" class="action-card">
+                                <div class="action-icon">
+                                    <i class="fas fa-truck"></i>
+                                </div>
+                                <div class="action-text">
+                                    <h4>Heavy Cargo</h4>
+                                    <p>Large item transport with our truck fleet</p>
+                                </div>
+                            </a>
+                            <a href="bulk-order.html" class="action-card">
+                                <div class="action-icon">
+                                    <i class="fas fa-boxes"></i>
+                                </div>
+                                <div class="action-text">
+                                    <h4>Bulk Order</h4>
+                                    <p>Create multiple deliveries at once</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tracking Widget -->
+                <div class="widget">
+                    <div class="widget-header">
+                        <h3>Track Your Packages</h3>
+                    </div>
+                    <div class="widget-content">
+                        <form class="tracking-form">
+                            <div class="input-with-icon">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="tracking-number" placeholder="Enter your tracking number">
+                            </div>
+                            <button type="submit" class="secondary-btn">Track Package</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Management Section -->
+            <div class="order-management">
+                <div class="section-header">
+                    <h2>Order Management</h2>
+                    <div class="section-actions">
+                        <button class="filter-btn"><i class="fas fa-filter"></i> Filter</button>
+                        <a href="order-history.html" class="view-all">View All Orders</a>
+                    </div>
+                </div>
+
+                <!-- Filter Options (Hidden by Default) -->
+                <div class="filter-options" style="display: none;">
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label>Status:</label>
+                            <select>
+                                <option value="all">All</option>
+                                <option value="scheduled">Scheduled</option>
+                                <option value="in-transit">In Transit</option>
+                                <option value="delivered">Delivered</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Date Range:</label>
+                            <input type="date"> to <input type="date">
+                        </div>
+                        <div class="filter-group">
+                            <label>Service Type:</label>
+                            <select>
+                                <option value="all">All</option>
+                                <option value="express">Express</option>
+                                <option value="scheduled">Scheduled</option>
+                                <option value="heavy">Heavy Cargo</option>
+                            </select>
+                        </div>
+                        <button class="primary-btn">Apply Filters</button>
+                    </div>
+                </div>
+
+                <!-- Bulk Actions Bar -->
+                <div class="bulk-actions">
+                    <div class="action-selection">
+                        <input type="checkbox" id="select-all">
+                        <label for="select-all">Select All</label>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-btn" disabled><i class="fas fa-edit"></i> Edit Selected</button>
+                        <button class="action-btn" disabled><i class="fas fa-times"></i> Cancel Selected</button>
+                        <button class="action-btn" disabled><i class="fas fa-download"></i> Export Selected</button>
+                    </div>
+                </div>
+
+                <div class="orders-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>Order ID</th>
+                                <th>Date</th>
+                                <th>Service Type</th>
+                                <th>Status</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Assigned To</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>DEL-12345</td>
+                                <td>15 May, 2025</td>
+                                <td>Express Delivery</td>
+                                <td><span class="status-in-transit">In Transit</span></td>
+                                <td>Jakarta Pusat</td>
+                                <td>Jakarta Selatan</td>
+                                <td>Team A</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <a href="order-tracking.html?id=DEL-12345" class="btn-track"><i class="fas fa-route"></i></a>
+                                        <a href="#" class="btn-repeat"><i class="fas fa-redo"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>DEL-12344</td>
+                                <td>12 May, 2025</td>
+                                <td>Heavy Cargo</td>
+                                <td><span class="status-delivered">Delivered</span></td>
+                                <td>Surabaya</td>
+                                <td>Malang</td>
+                                <td>Team C</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <a href="order-tracking.html?id=DEL-12344" class="btn-track"><i class="fas fa-route"></i></a>
+                                        <a href="#" class="btn-repeat"><i class="fas fa-redo"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>DEL-12343</td>
+                                <td>10 May, 2025</td>
+                                <td>Scheduled Delivery</td>
+                                <td><span class="status-scheduled">Scheduled</span></td>
+                                <td>Bandung</td>
+                                <td>Jakarta Barat</td>
+                                <td>Team B</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <a href="order-tracking.html?id=DEL-12343" class="btn-track"><i class="fas fa-route"></i></a>
+                                        <a href="#" class="btn-edit"><i class="fas fa-edit"></i></a>
+                                        <a href="#" class="btn-cancel"><i class="fas fa-times"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>DEL-12342</td>
+                                <td>10 May, 2025</td>
+                                <td>Express Delivery</td>
+                                <td><span class="status-scheduled">Scheduled</span></td>
+                                <td>Jakarta Timur</td>
+                                <td>Jakarta Utara</td>
+                                <td>Team A</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <a href="order-tracking.html?id=DEL-12342" class="btn-track"><i class="fas fa-route"></i></a>
+                                        <a href="#" class="btn-edit"><i class="fas fa-edit"></i></a>
+                                        <a href="#" class="btn-cancel"><i class="fas fa-times"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>DEL-12341</td>
+                                <td>09 May, 2025</td>
+                                <td>Express Delivery</td>
+                                <td><span class="status-delivered">Delivered</span></td>
+                                <td>Jakarta Selatan</td>
+                                <td>Jakarta Barat</td>
+                                <td>Team A</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <a href="order-tracking.html?id=DEL-12341" class="btn-track"><i class="fas fa-route"></i></a>
+                                        <a href="#" class="btn-repeat"><i class="fas fa-redo"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination">
+                    <a href="#" class="page-item active">1</a>
+                    <a href="#" class="page-item">2</a>
+                    <a href="#" class="page-item">3</a>
+                    <span class="page-item dots">...</span>
+                    <a href="#" class="page-item">10</a>
+                    <a href="#" class="page-item next">Next <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="/api/placeholder/180/50" alt="Deliveree Logo">
+                    <p>The fastest, easier way to book & manage your deliveries.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Resources</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#">Express Delivery</a></li>
+                            <li><a href="#">Scheduled Delivery</a></li>
+                            <li><a href="#">Heavy Cargo</a></li>
+                            <li><a href="#">Business Solutions</a></li>
+                            <li><a href="#">International Shipping</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">FAQs</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h4>Join our newsletter</h4>
+                    <p>Get the latest news and offers</p>
+                    <form class="newsletter-form">
+                        <div class="input-with-btn">
+                            <input type="email" placeholder="Enter your email">
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Deliveree. All rights reserved.</p>
+                <div class="payment-methods">
+                    <img src="/api/placeholder/200/30" alt="Payment Methods">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

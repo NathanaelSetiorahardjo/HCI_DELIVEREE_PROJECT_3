@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Deliveree</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* === RESET AND BASE STYLES === */
+        :root {
+          --primary-color: #29d861;       
+          --primary-dark: #09bb09;        
+          --secondary-color: #1e88e5;     
+          --tertiary-color: #43a047;      
+          --text-color: #333333;          
+          --text-light: #666666;          
+          --background-light: #f5f7fa;    
+          --white: #ffffff;
+          --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.08);
+          --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+          --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+          --border-radius: 8px;
+          --transition: all 0.3s ease;
+          --spacing-xs: 4px;
+          --spacing-sm: 8px;
+          --spacing-md: 16px;
+          --spacing-lg: 24px;
+          --spacing-xl: 32px;
+          --spacing-xxl: 48px;
+          --container-padding: 0 24px;
+          --header-height: 80px;
+          --error-color: #e53e3e;
+          --success-color: #38a169;
+        }
+
+        /* Reset & Base Styles */
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+          color: var(--text-color);
+          line-height: 1.6;
+          background-color: var(--background-light);
+          overflow-x: hidden;
+        }
+
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+
+        a {
+          text-decoration: none;
+          color: inherit;
+        }
+
+        ul, ol {
+          list-style: none;
+        }
+
+        button {
+          cursor: pointer;
+          border: none;
+          background: none;
+          font-family: inherit;
+        }
+
+        .container {
+          width: 100%;
+          max-width: 1280px;
+          margin: 0 auto;
+          padding: var(--container-padding);
+        }
+
+        /* === HEADER === */
+        header {
+          background-color: var(--white);
+          position: fixed;
+          width: 100%;
+          top: 0;
+          z-index: 1000;
+          height: var(--header-height);
+          box-shadow: var(--shadow-sm);
+          transition: var(--transition);
+        }
+
+        nav {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          height: 100%;
+          margin-top: 18px;
+        }
+
+        .logo {
+          display: flex;
+          align-items: center;
+        }
+
+        .logo img {
+          height: 36px;
+          transition: var(--transition);
+        }
+
+        header.scrolled .logo img {
+          height: 32px;
+        }
+
+        .nav-links {
+          display: flex;
+          gap: var(--spacing-lg);
+          align-items: center;
+          height: 100%;
+        }
+
+        .nav-links li {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          position: relative;
+        }
+
+        .nav-links a {
+          font-weight: 500;
+          color: var(--text-color);
+          transition: var(--transition);
+          padding: 0 var(--spacing-sm);
+          letter-spacing: 0.3px;
+          height: 100%;
+          display: flex;
+          align-items: center;
+        }
+
+        .nav-links a:hover {
+          color: var(--primary-color);
+        }
+
+        .nav-links a.active {
+          color: var(--primary-color);
+          font-weight: 600;
+        }
+
+        .nav-links a.active::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 3px;
+          background-color: var(--primary-color);
+          border-radius: 3px 3px 0 0;
+        }
+
+        .nav-links a.contact-btn {
+          background-color: var(--primary-color);
+          color: var(--white);
+          padding: 10px 24px;
+          border-radius: 40px;
+          margin-left: var(--spacing-md);
+          height: auto;
+          font-weight: 600;
+          letter-spacing: 0.5px;
+          box-shadow: 0 2px 10px rgba(30, 136, 229, 0.3);
+          transition: all 0.2s ease;
+        }
+
+        .nav-links a.contact-btn:hover {
+          background-color: var(--primary-dark);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(30, 136, 229, 0.4);
+        }
+
+        .hamburger {
+          display: none;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 24px;
+          height: 18px;
+          cursor: pointer;
+          z-index: 1001;
+        }
+
+        .hamburger span {
+          display: block;
+          width: 100%;
+          height: 2px;
+          background-color: var(--text-color);
+          border-radius: 2px;
+          transition: var(--transition);
+        }
+
+        /* === MAIN CONTENT === */
+        .main-content {
+          margin-top: calc(var(--header-height) + var(--spacing-xl));
+          margin-bottom: var(--spacing-xxl);
+          min-height: calc(100vh - 280px);
+        }
+
+        /* === SIGNUP CARD === */
+        .signup-container {
+          background-color: var(--white);
+          border-radius: var(--border-radius);
+          box-shadow: var(--shadow-md);
+          max-width: 800px;
+          margin: 0 auto;
+          overflow: hidden;
+        }
+
+        .signup-header {
+          background-color: var(--primary-color);
+          color: var(--white);
+          padding: var(--spacing-xl);
+          text-align: center;
+        }
+
+        .signup-header h1 {
+          font-size: 28px;
+          margin-bottom: var(--spacing-sm);
+        }
+
+        .signup-header p {
+          font-size: 16px;
+          opacity: 0.9;
+        }
+
+        .signup-body {
+          padding: var(--spacing-xl);
+        }
+
+        /* === ACCOUNT TYPE SELECTION === */
+        .account-type-radio{
+          visibility: hidden;
+        }
+
+        .account-type-selection {
+          margin-bottom: var(--spacing-xl);
+        }
+
+        .account-type-selection h2 {
+          font-size: 20px;
+          margin-bottom: var(--spacing-md);
+        }
+
+        .account-types {
+          display: flex;
+          gap: var(--spacing-lg);
+          flex-wrap: wrap;
+          margin-bottom: var(--spacing-lg);
+        }
+
+        .account-type {
+          flex: 1;
+          padding: var(--spacing-lg);
+          border: 2px solid #e1e5ee;
+          border-radius: var(--border-radius);
+          transition: var(--transition);
+          cursor: pointer;
+          position: relative;
+        }
+
+        .account-type:hover,
+        .account-type.selected {
+          border-color: var(--primary-color);
+          background-color: rgba(41, 216, 97, 0.05);
+        }
+
+        .account-type-header {
+          display: flex;
+          align-items: center;
+          margin-bottom: var(--spacing-sm);
+          margin-top: -25px;
+        }
+
+        .account-icon {
+          width: 40px;
+          height: 40px;
+          background-color: rgba(41, 216, 97, 0.1);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--primary-color);
+          margin-right: var(--spacing-sm);
+        }
+
+        .account-type h3 {
+          font-size: 18px;
+        }
+
+        .account-type p {
+          font-size: 14px;
+          color: var(--text-light);
+          margin-bottom: var(--spacing-xs);
+        }
+
+        .account-type ul {
+          list-style: none;
+          padding-left: 0;
+          margin-top: var(--spacing-sm);
+        }
+
+        .account-type ul li {
+          font-size: 14px;
+          padding-left: 20px;
+          position: relative;
+          margin-bottom: 5px;
+        }
+
+        .account-type ul li::before {
+          content: "✓";
+          color: var(--primary-color);
+          position: absolute;
+          left: 0;
+        }
+
+        /* === FORM SECTIONS === */
+        .form-section {
+          margin-bottom: var(--spacing-lg);
+        }
+
+        .form-section h3 {
+          font-size: 18px;
+          margin-bottom: var(--spacing-md);
+        }
+
+        .form-row {
+          display: flex;
+          gap: var(--spacing-lg);
+          flex-wrap: wrap;
+          margin-bottom: var(--spacing-md);
+        }
+
+        .form-group {
+          flex: 1;
+          position: relative;
+        }
+
+        .form-group label {
+          display: block;
+          margin-bottom: var(--spacing-xs);
+          font-size: 14px;
+          font-weight: 500;
+          color: var(--text-light);
+        }
+
+        .form-group input,
+        .form-group select {
+          width: 100%;
+          padding: var(--spacing-sm) var(--spacing-md);
+          border: 1px solid #ddd;
+          border-radius: var(--border-radius);
+          font-size: 15px;
+          transition: var(--transition);
+          background-color: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+          border-color: var(--primary-color);
+          outline: none;
+          box-shadow: 0 0 0 3px rgba(41, 216, 97, 0.1);
+        }
+
+        /* Input with icon styling */
+        .input-with-icon {
+          position: relative;
+          display: flex;
+          align-items: center;
+        }
+
+        .input-with-icon .input-icon {
+          position: absolute;
+          left: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          color: var(--text-light);
+          font-size: 14px;
+          z-index: 5;
+          pointer-events: none;
+        }
+
+        .input-with-icon input {
+          padding-left: 40px;
+        }
+
+        /* Password field specific styling */
+        .input-with-icon.password-field input {
+          padding-left: 40px;
+          padding-right: 45px;
+        }
+
+        /* Password toggle styling - FIXED */
+        .password-toggle {
+          position: absolute;
+          right: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          color: var(--text-light);
+          cursor: pointer;
+          font-size: 16px;
+          transition: var(--transition);
+          z-index: 10;
+          width: 20px;
+          height: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: none;
+          border: none;
+          padding: 0;
+        }
+
+        .password-toggle:hover {
+          color: var(--primary-color);
+        }
+
+        .password-toggle:focus {
+          outline: none;
+          color: var(--primary-color);
+        }
+
+        /* Validation styles */
+        .form-group input.valid,
+        .form-group select.valid {
+          border-color: var(--success-color);
+          background-color: rgba(56, 161, 105, 0.05);
+        }
+
+        .form-group input.invalid,
+        .form-group select.invalid {
+          border-color: var(--error-color);
+          background-color: rgba(229, 62, 62, 0.05);
+        }
+
+        .error-message {
+          color: var(--error-color);
+          font-size: 12px;
+          margin-top: 4px;
+          display: none;
+          line-height: 1.4;
+        }
+
+        .error-message.show {
+          display: block;
+        }
+
+        .form-divider {
+          height: 1px;
+          background-color: #e1e5ee;
+          margin: var(--spacing-xl) 0;
+        }
+
+        .form-check {
+          display: flex;
+          align-items: flex-start;
+          font-size: 14px;
+          margin-bottom: var(--spacing-md);
+        }
+
+        .form-check input {
+          margin-right: var(--spacing-sm);
+          margin-top: 2px;
+          flex-shrink: 0;
+        }
+
+        .form-check a {
+          color: var(--primary-color);
+          text-decoration: none;
+        }
+
+        .form-check a:hover {
+          text-decoration: underline;
+        }
+
+        .submit-btn {
+          background-color: var(--primary-color);
+          color: var(--white);
+          border: none;
+          padding: var(--spacing-md);
+          border-radius: var(--border-radius);
+          font-size: 16px;
+          font-weight: 600;
+          width: 100%;
+          margin-top: var(--spacing-lg);
+          transition: var(--transition);
+          cursor: pointer;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+          background-color: var(--primary-dark);
+          transform: translateY(-1px);
+        }
+
+        .submit-btn:disabled {
+          background-color: #ccc;
+          cursor: not-allowed;
+          transform: none;
+        }
+
+        .login-link {
+          text-align: center;
+          margin-top: var(--spacing-lg);
+          font-size: 14px;
+        }
+
+        .login-link a {
+          color: var(--primary-color);
+          font-weight: 500;
+          text-decoration: none;
+        }
+
+        .login-link a:hover {
+          text-decoration: underline;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background-color: #1a2130;
+            color: var(--white);
+            padding: 80px 0 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo {
+            flex-basis: 100%;
+            max-width: 300px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo img {
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .link-group h4 {
+            font-size: 18px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .link-group h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .link-group ul {
+            list-style: none;
+        }
+        
+        .link-group ul li {
+            margin-bottom: 12px;
+        }
+        
+        .link-group ul li a {
+            color: var(--white);
+            opacity: 0.7;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .link-group ul li a:hover {
+            opacity: 1;
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+        
+        .footer-newsletter {
+            flex-basis: 100%;
+            max-width: 350px;
+        }
+        
+        .footer-newsletter h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-newsletter p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .newsletter-form {
+            margin-bottom: 20px;
+        }
+        
+        .input-with-btn {
+            position: relative;
+        }
+        
+        .input-with-btn input {
+            width: 100%;
+            padding: 15px;
+            border-radius: 4px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+        }
+        
+        .input-with-btn button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .input-with-btn button:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .app-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .app-buttons a img {
+            height: 40px;
+            border-radius: 4px;
+        }
+        
+        .footer-bottom {
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-bottom p {
+            opacity: 0.7;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+          .account-types {
+            flex-direction: column;
+          }
+
+          .form-row {
+            flex-direction: column;
+            gap: var(--spacing-sm);
+          }
+
+          .main-content {
+            margin-top: calc(var(--header-height) + var(--spacing-lg));
+          }
+
+          .nav-links {
+            display: none;
+          }
+
+          .hamburger {
+            display: flex;
+          }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="./media/logodeliveree.png" alt="Deliveree Logo">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Rewards</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="signup.html" class="contact-btn">Sign in</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <div class="signup-container">
+                <div class="signup-header">
+                    <h1>Create Your Deliveree Account</h1>
+                    <p>Start shipping packages quickly and efficiently</p>
+                </div>
+                
+                <div class="signup-body">
+                    <form id="signup-form">
+                        <!-- Account Type Selection -->
+                        <div class="account-type-selection">
+                            <h2>Select Account Type</h2>
+                            <div class="account-types">
+                                <label class="account-type" id="basic-account">
+                                    <input type="radio" name="account-type" value="basic" class="account-type-radio" checked>
+                                    <div class="selected-indicator"></div>
+                                    <div class="account-type-header">
+                                        <div class="account-icon">
+                                            <i class="fas fa-user"></i>
+                                        </div>
+                                        <h3>Basic Account</h3>
+                                    </div>
+                                    <p>Perfect for individual users with occasional delivery needs</p>
+                                    <ul>
+                                        <li>Single package delivery</li>
+                                        <li>Real-time tracking</li>
+                                        <li>Flexible payment options</li>
+                                    </ul>
+                                </label>
+                                
+                                <label class="account-type" id="business-account">
+                                    <input type="radio" name="account-type" value="business" class="account-type-radio">
+                                    <div class="selected-indicator"></div>
+                                    <div class="account-type-header">
+                                        <div class="account-icon">
+                                            <i class="fas fa-building"></i>
+                                        </div>
+                                        <h3>Business Account</h3>
+                                    </div>
+                                    <p>For businesses with regular delivery requirements</p>
+                                    <ul>
+                                        <li>Multiple package management</li>
+                                        <li>Priority delivery</li>
+                                        <li>Volume discounts</li>
+                                        <li>Dedicated account manager</li>
+                                    </ul>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-divider"></div>
+                        
+                        <!-- Personal Information -->
+                        <div class="form-section">
+                            <h3>Personal Information</h3>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="first-name">First Name</label>
+                                    <input type="text" id="first-name" required minlength="2" maxlength="50">
+                                    <div class="error-message">First name must be between 2-50 characters</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="last-name">Last Name</label>
+                                    <input type="text" id="last-name" required minlength="2" maxlength="50">
+                                    <div class="error-message">Last name must be between 2-50 characters</div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-envelope input-icon"></i>
+                                        <input type="email" id="email" required>
+                                    </div>
+                                    <div class="error-message">Please enter a valid email address</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-phone input-icon"></i>
+                                        <input type="tel" id="phone" required pattern="^[\+]?[0-9\-\(\)\s]+$" minlength="10">
+                                    </div>
+                                    <div class="error-message">Please enter a valid phone number (minimum 10 digits)</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Address Information -->
+                        <div class="form-section">
+                            <h3>Address Information</h3>
+                            
+                            <div class="form-group">
+                                <label for="address">Street Address</label>
+                                <input type="text" id="address" required minlength="10" maxlength="200">
+                                <div class="error-message">Street address must be between 10-200 characters</div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" id="city" required minlength="2" maxlength="50">
+                                    <div class="error-message">City name must be between 2-50 characters</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="province">Province</label>
+                                    <input type="text" id="province" required minlength="2" maxlength="50">
+                                    <div class="error-message">Province name must be between 2-50 characters</div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="postal-code">Postal Code</label>
+                                    <input type="text" id="postal-code" required pattern="^[0-9]{5}$" maxlength="5">
+                                    <div class="error-message">Postal code must be exactly 5 digits</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="country">Country</label>
+                                    <select id="country" required>
+                                        <option value="" disabled selected>Select country</option>
+                                        <option value="id">Indonesia</option>
+                                        <option value="my">Malaysia</option>
+                                        <option value="th">Thailand</option>
+                                        <option value="sg">Singapore</option>
+                                        <option value="ph">Philippines</option>
+                                        <option value="vn">Vietnam</option>
+                                    </select>
+                                    <div class="error-message">Please select a country</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Business Information -->
+                        <div class="form-section" id="business-info-section" style="display: none;">
+                            <h3>Business Information</h3>
+                            
+                            <div class="form-group">
+                                <label for="company-name">Company Name</label>
+                                <input type="text" id="company-name" minlength="2" maxlength="100">
+                                <div class="error-message">Company name must be between 2-100 characters</div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="business-type">Business Type</label>
+                                    <select id="business-type">
+                                        <option value="" disabled selected>Select business type</option>
+                                        <option value="retail">Retail</option>
+                                        <option value="ecommerce">E-commerce</option>
+                                        <option value="manufacturing">Manufacturing</option>
+                                        <option value="service">Service Provider</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <div class="error-message">Please select a business type</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tax-id">Tax ID / NPWP</label>
+                                    <input type="text" id="tax-id" pattern="^[0-9\.\-]+$" minlength="15" maxlength="20">
+                                    <div class="error-message">Tax ID must be between 15-20 characters (numbers, dots, dashes only)</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-divider"></div>
+                        
+                        <!-- Account Security -->
+                        <div class="form-section">
+                            <h3>Create Password</h3>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <div class="input-with-icon password-field">
+                                        <i class="fas fa-lock input-icon"></i>
+                                        <input type="password" id="password" required minlength="8">
+                                        <button type="button" class="password-toggle" onclick="togglePassword('password')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="error-message">Password must be at least 8 characters with uppercase, lowercase, number and special character</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm-password">Confirm Password</label>
+                                    <div class="input-with-icon password-field">
+                                        <i class="fas fa-lock input-icon"></i>
+                                        <input type="password" id="confirm-password" required>
+                                        <button type="button" class="password-toggle" onclick="togglePassword('confirm-password')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="error-message">Passwords do not match</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Terms and Conditions -->
+                        <div class="form-check">
+                            <input type="checkbox" id="terms" required>
+                            <label for="terms">I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a></label>
+                        </div>
+                        
+                        <div class="form-check">
+                            <input type="checkbox" id="newsletter">
+                            <label for="newsletter">Subscribe to our newsletter for exclusive offers and updates</label>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Create Account</button>
+                        
+                        <div class="login-link">
+                            Already have an account? <a href="login.html">Sign in</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="./media/logodeliveree.png" alt="Deliveree Logo">
+                    <p>The fastest, easier way to book & manage your deliveries.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Resources</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#">Express Delivery</a></li>
+                            <li><a href="#">Scheduled Delivery</a></li>
+                            <li><a href="#">Heavy Cargo</a></li>
+                            <li><a href="#">Business Solutions</a></li>
+                            <li><a href="#">International Shipping</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">FAQs</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h4>Join our newsletter</h4>
+                    <p>Get the latest news and offers</p>
+                    <form class="newsletter-form">
+                        <div class="input-with-btn">
+                            <input type="email" placeholder="Enter your email">
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                    <div class="app-buttons">
+                        <a href="#"><img src="./media/google-play.png" alt="Google Play"></a>
+                        <a href="#"><img src="./media/app-store.png" alt="App Store"></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Deliveree. All rights reserved.</p>
+                <div class="payment-methods">
+                    <img src="https://via.placeholder.com/200x30/cccccc/666666?text=Payment+Methods" alt="Payment Methods">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FIXED Password toggle functionality
+        function togglePassword(fieldId) {
+            const passwordField = document.getElementById(fieldId);
+            const toggleButton = passwordField.parentElement.querySelector('.password-toggle');
+            const toggleIcon = toggleButton.querySelector('i');
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+
+        // Validation functions
+        function validateName(value) {
+            return value.length >= 2 && value.length <= 50 && /^[a-zA-Z\s]+$/.test(value);
+        }
+
+        function validateEmail(value) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(value);
+        }
+
+        function validatePhone(value) {
+            const phoneRegex = /^[\+]?[0-9\-\(\)\s]+$/;
+            return phoneRegex.test(value) && value.replace(/[^0-9]/g, '').length >= 10;
+        }
+
+        function validateAddress(value) {
+            return value.length >= 10 && value.length <= 200;
+        }
+
+        function validateCity(value) {
+            return value.length >= 2 && value.length <= 50 && /^[a-zA-Z\s]+$/.test(value);
+        }
+
+        function validatePostalCode(value) {
+            return /^[0-9]{5}$/.test(value);
+        }
+
+        function validatePassword(value) {
+            // At least 8 characters, 1 uppercase, 1 lowercase, 1 number, 1 special character
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            return passwordRegex.test(value);
+        }
+
+        function validateCompanyName(value) {
+            return value.length >= 2 && value.length <= 100;
+        }
+
+        function validateTaxId(value) {
+            return /^[0-9\.\-]+$/.test(value) && value.length >= 15 && value.length <= 20;
+        }
+
+        // Enhanced validation with better error handling
+        function validateField(field) {
+            const value = field.value.trim();
+            const fieldType = field.id;
+            const errorMsg = field.closest('.form-group').querySelector('.error-message');
+            let isValid = true;
+            let errorText = '';
+
+            // Skip validation for non-required business fields when basic account is selected
+            const isBusinessAccount = document.querySelector('input[name="account-type"]:checked').value === 'business';
+            const isBusinessField = ['company-name', 'business-type', 'tax-id'].includes(fieldType);
+            
+            if (isBusinessField && !isBusinessAccount) {
+                field.classList.remove('valid', 'invalid');
+                if (errorMsg) {
+                    errorMsg.style.display = 'none';
+                    errorMsg.classList.remove('show');
+                }
+                return true;
+            }
+
+            switch (fieldType) {
+                case 'first-name':
+                case 'last-name':
+                    if (!value) {
+                        isValid = false;
+                        errorText = 'This field is required';
+                    } else if (!validateName(value)) {
+                        isValid = false;
+                        errorText = 'Name must be between 2-50 characters (letters only)';
+                    }
+                    break;
+
+                case 'email':
+                    if (!value) {
+                        isValid = false;
+                        errorText = 'Email is required';
+                    } else if (!validateEmail(value)) {
+                        isValid = false;
+                        errorText = 'Please enter a valid email address';
+                    }
+                    break;
+
+                case 'phone':
+                    if (!value) {
+                        isValid = false;
+                        errorText = 'Phone number is required';
+                    } else if (!validatePhone(value)) {
+                        isValid = false;
+                        errorText = 'Please enter a valid phone number (minimum 10 digits)';
+                    }
+                    break;
+
+                case 'address':
+                    if (!value) {
+                        isValid = false;
+                        errorText = 'Street address is required';
+                    } else if (!validateAddress(value)) {
+                        isValid = false;
+                        errorText = 'Street address must be between 10-200 characters';
+                    }
+                    break;
+
+                case 'city':
+                case 'province':
+                    if (!value) {
+                        isValid = false;
+                        errorText = 'This field is required';
+                    } else if (!validateCity(value)) {
+                        isValid = false;
+                        errorText = 'Must be between 2-50 characters (letters only)';
+                    }
+                    break;
+
+                case 'postal-code':
+                    if (!value) {
+                        isValid = false;
+                        errorText = 'Postal code is required';
+                    } else if (!validatePostalCode(value)) {
+                        isValid = false;
+                        errorText = 'Postal code must be exactly 5 digits';
+                    }
+                    break;
+
+                case 'country':
+                    if (!value) {
+                        isValid = false;
+                        errorText = 'Please select a country';
+                    }
+                    break;
+
+                case 'password':
+                    if (!value) {
+                        isValid = false;
+                        errorText = 'Password is required';
+                    } else if (!validatePassword(value)) {
+                        isValid = false;
+                        errorText = 'Password must be at least 8 characters with uppercase, lowercase, number and special character';
+                    }
+                    // Also validate confirm password if it has a value
+                    const confirmPassword = document.getElementById('confirm-password');
+                    if (confirmPassword.value) {
+                        setTimeout(() => validateField(confirmPassword), 100);
+                    }
+                    break;
+
+                case 'confirm-password':
+                    const originalPassword = document.getElementById('password').value;
+                    if (!value) {
+                        isValid = false;
+                        errorText = 'Please confirm your password';
+                    } else if (value !== originalPassword) {
+                        isValid = false;
+                        errorText = 'Passwords do not match';
+                    }
+                    break;
+
+                case 'company-name':
+                    if (isBusinessAccount) {
+                        if (!value) {
+                            isValid = false;
+                            errorText = 'Company name is required for business accounts';
+                        } else if (!validateCompanyName(value)) {
+                            isValid = false;
+                            errorText = 'Company name must be between 2-100 characters';
+                        }
+                    }
+                    break;
+
+                case 'business-type':
+                    if (isBusinessAccount && !value) {
+                        isValid = false;
+                        errorText = 'Please select a business type';
+                    }
+                    break;
+
+                case 'tax-id':
+                    if (isBusinessAccount) {
+                        if (!value) {
+                            isValid = false;
+                            errorText = 'Tax ID is required for business accounts';
+                        } else if (!validateTaxId(value)) {
+                            isValid = false;
+                            errorText = 'Tax ID must be between 15-20 characters (numbers, dots, dashes only)';
+                        }
+                    }
+                    break;
+            }
+
+            // Apply validation styling with enhanced error display
+            if (isValid) {
+                field.classList.remove('invalid');
+                field.classList.add('valid');
+                if (errorMsg) {
+                    errorMsg.style.display = 'none';
+                    errorMsg.classList.remove('show');
+                }
+            } else {
+                field.classList.remove('valid');
+                field.classList.add('invalid');
+                if (errorMsg) {
+                    errorMsg.textContent = errorText;
+                    errorMsg.style.display = 'block';
+                    errorMsg.classList.add('show');
+                }
+            }
+
+            return isValid;
+        }
+
+        // Form initialization with improved functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const basicAccount = document.getElementById('basic-account');
+            const businessAccount = document.getElementById('business-account');
+            const businessInfoSection = document.getElementById('business-info-section');
+            const form = document.getElementById('signup-form');
+            
+            // Get all form inputs
+            const formInputs = form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="password"], select');
+            
+            // Add real-time validation to all inputs with improved event handling
+            formInputs.forEach(input => {
+                // Validate on blur (when user leaves field)
+                input.addEventListener('blur', () => validateField(input));
+                
+                // Validate on input for fields that are already invalid
+                input.addEventListener('input', () => {
+                    if (input.classList.contains('invalid')) {
+                        // Debounce validation while typing
+                        clearTimeout(input.validationTimeout);
+                        input.validationTimeout = setTimeout(() => {
+                            validateField(input);
+                        }, 300);
+                    }
+                });
+
+                // Clear validation timeout on focus
+                input.addEventListener('focus', () => {
+                    clearTimeout(input.validationTimeout);
+                });
+            });
+
+            // Account type selection with improved logic
+            function updateSelection() {
+                const isBusinessSelected = document.querySelector('input[name="account-type"]:checked').value === 'business';
+                
+                basicAccount.classList.toggle('selected', !isBusinessSelected);
+                businessAccount.classList.toggle('selected', isBusinessSelected);
+                
+                // Smooth transition for business section
+                if (isBusinessSelected) {
+                    businessInfoSection.style.display = 'block';
+                    setTimeout(() => {
+                        businessInfoSection.style.opacity = '1';
+                    }, 10);
+                } else {
+                    businessInfoSection.style.opacity = '0';
+                    setTimeout(() => {
+                        businessInfoSection.style.display = 'none';
+                    }, 300);
+                }
+                
+                // Revalidate business fields when account type changes
+                const businessFields = ['company-name', 'business-type', 'tax-id'];
+                businessFields.forEach(fieldId => {
+                    const field = document.getElementById(fieldId);
+                    if (field) {
+                        setTimeout(() => validateField(field), 100);
+                    }
+                });
+            }
+            
+            updateSelection();
+            
+            document.querySelectorAll('input[name="account-type"]').forEach(radio => {
+                radio.addEventListener('change', updateSelection);
+            });
+            
+            basicAccount.addEventListener('click', function(e) {
+                if (e.target.tagName !== 'INPUT') {
+                    document.querySelector('input[value="basic"]').checked = true;
+                    updateSelection();
+                }
+            });
+            
+            businessAccount.addEventListener('click', function(e) {
+                if (e.target.tagName !== 'INPUT') {
+                    document.querySelector('input[value="business"]').checked = true;
+                    updateSelection();
+                }
+            });
+            
+            // Enhanced form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate all fields
+                let isFormValid = true;
+                const termsCheckbox = document.getElementById('terms');
+                
+                formInputs.forEach(input => {
+                    if (!validateField(input)) {
+                        isFormValid = false;
+                    }
+                });
+                
+                // Check terms and conditions
+                if (!termsCheckbox.checked) {
+                    alert('Please agree to the Terms and Conditions');
+                    isFormValid = false;
+                    termsCheckbox.focus();
+                }
+                
+                if (isFormValid) {
+                    // Show loading state
+                    const submitBtn = form.querySelector('.submit-btn');
+                    const originalText = submitBtn.textContent;
+                    submitBtn.textContent = 'Creating Account...';
+                    submitBtn.disabled = true;
+                    
+                    // Simulate account creation
+                    setTimeout(() => {
+                        alert('Account created successfully! You will be redirected to the dashboard.');
+                        // window.location.href = 'dashboard.html';
+                        
+                        // Reset button state
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    }, 2000);
+                } else {
+                    alert('Please fix all validation errors before submitting.');
+                    // Focus on first invalid field
+                    const firstInvalidField = form.querySelector('.invalid');
+                    if (firstInvalidField) {
+                        firstInvalidField.focus();
+                    }
+                }
+            });
+
+            // Add smooth scrolling for better UX
+            const smoothScrollToError = () => {
+                const firstError = document.querySelector('.error-message.show');
+                if (firstError) {
+                    firstError.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'center' 
+                    });
+                }
+            };
+
+            // Initialize password field styling
+            businessInfoSection.style.transition = 'opacity 0.3s ease';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic User Dashboard - Deliveree</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="./media/logodeliveree.png" alt="Deliveree Logo">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="#">History</a></li>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li>
+                        <div class="user-profile">
+                            <span>Welcome, User</span>
+                            <div class="user-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
+                            <div class="profile-dropdown">
+                                <a href="profile.html">My Profile</a>
+                                <a href="home.html">Log Out</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <main class="dashboard-content">
+        <div class="container">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <h1>My Dashboard</h1>
+                <div class="dashboard-actions">
+                    <button class="primary-btn"><i class="fas fa-plus"></i> New Delivery</button>
+                </div>
+            </div>
+
+            <!-- Dashboard Widgets -->
+            <div class="dashboard-widgets">
+                <!-- Quick Actions Widget -->
+                <div class="widget">
+                    <div class="widget-header">
+                        <h3>Quick Actions</h3>
+                    </div>
+                    <div class="widget-content">
+                        <div class="quick-actions">
+                            <a href="neworder.html?type=scheduled" class="action-card">
+                                <div class="action-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="action-text">
+                                    <h4>Express Delivery</h4>
+                                    <p>Same-day delivery within your city</p>
+                                </div>
+                            </a>
+                            <a href="neworder.html?type=scheduled" class="action-card">
+                                <div class="action-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <div class="action-text">
+                                    <h4>Scheduled Delivery</h4>
+                                    <p>Plan ahead with our scheduled service</p>
+                                </div>
+                            </a>
+                            <a href="neworder.html?type=heavy" class="action-card">
+                                <div class="action-icon">
+                                    <i class="fas fa-truck"></i>
+                                </div>
+                                <div class="action-text">
+                                    <h4>Heavy Cargo</h4>
+                                    <p>Large item transport with our truck fleet</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tracking Widget -->
+                <div class="widget">
+                    <div class="widget-header">
+                        <h3>Track Your Package</h3>
+                    </div>
+                    <div class="widget-content">
+                        <form class="tracking-form">
+                            <div class="input-with-icon">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="tracking-number" placeholder="Enter your tracking number">
+                            </div>
+                            <button type="submit" class="primary-btn">Track Package</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Orders Section -->
+            <div class="recent-orders">
+                <div class="section-header">
+                    <h2>Recent Orders</h2>
+                    <a href="#" class="view-all">View All Orders</a>
+                </div>
+
+                <div class="orders-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Date</th>
+                                <th>Service Type</th>
+                                <th>Status</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>DEL-12345</td>
+                                <td>15 May, 2025</td>
+                                <td>Express Delivery</td>
+                                <td><span class="status-in-transit">In Transit</span></td>
+                                <td>Jakarta Pusat</td>
+                                <td>Jakarta Selatan</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <a href="order-tracking.html?id=DEL-12345" class="btn-track"><i class="fas fa-route"></i></a>
+                                        <a href="#" class="btn-repeat"><i class="fas fa-redo"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>DEL-12344</td>
+                                <td>12 May, 2025</td>
+                                <td>Heavy Cargo</td>
+                                <td><span class="status-delivered">Delivered</span></td>
+                                <td>Surabaya</td>
+                                <td>Malang</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <a href="order-tracking.html?id=DEL-12344" class="btn-track"><i class="fas fa-route"></i></a>
+                                        <a href="#" class="btn-repeat"><i class="fas fa-redo"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>DEL-12343</td>
+                                <td>10 May, 2025</td>
+                                <td>Scheduled Delivery</td>
+                                <td><span class="status-scheduled">Scheduled</span></td>
+                                <td>Bandung</td>
+                                <td>Jakarta Barat</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <a href="order-tracking.html?id=DEL-12343" class="btn-track"><i class="fas fa-route"></i></a>
+                                        <a href="#" class="btn-edit"><i class="fas fa-edit"></i></a>
+                                        <a href="#" class="btn-cancel"><i class="fas fa-times"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="./media/logodeliveree.png" alt="Deliveree Logo">
+                    <p>The fastest, easier way to book & manage your deliveries.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Resources</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#">Express Delivery</a></li>
+                            <li><a href="#">Scheduled Delivery</a></li>
+                            <li><a href="#">Heavy Cargo</a></li>
+                            <li><a href="#">Business Solutions</a></li>
+                            <li><a href="#">International Shipping</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">FAQs</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h4>Join our newsletter</h4>
+                    <p>Get the latest news and offers</p>
+                    <form class="newsletter-form">
+                        <div class="input-with-btn">
+                            <input type="email" placeholder="Enter your email">
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                    <div class="app-buttons">
+                        <a href="#"><img src="./media/google-play.png" alt="Google Play"></a>
+                        <a href="#"><img src="./media/app-store.png" alt="App Store"></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Deliveree. All rights reserved.</p>
+                <div class="payment-methods">
+                    <img src="./media/payment.png" alt="Payment Methods">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>// Function to get URL parameters
+function getUrlParams() {
+    const params = {};
+    const queryString = window.location.search.substring(1);
+    const pairs = queryString.split('&');
+    
+    for (const pair of pairs) {
+        const [key, value] = pair.split('=');
+        if (key) {
+            params[decodeURIComponent(key)] = decodeURIComponent(value || '');
+        }
+    }
+    
+    return params;
+}
+
+// Function to check and handle URL parameters on page load
+function handleUrlParams() {
+    const params = getUrlParams();
+    
+    // Check if there's a tracking parameter
+    if (params.track) {
+        const trackingInput = document.getElementById('tracking-number');
+        if (trackingInput) {
+            trackingInput.value = params.track;
+            // Submit the tracking form
+            setTimeout(() => {
+                document.querySelector('.tracking-form').dispatchEvent(new Event('submit'));
+                // Scroll to tracking results
+                document.querySelector('.widget:nth-child(2)').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }, 500);
+        }
+    }
+    
+    // Check if returning from successful order placement
+    if (params.orderplaced) {
+        showNotification('Your order has been successfully placed!', 'success', 5000);
+    }
+}// Quick Actions Widget functionality
+function handleQuickActions() {
+    const expressDeliveryBtn = document.querySelector('a[href="neworderhtml?type=express"]');
+    const scheduledDeliveryBtn = document.querySelector('a[href="neworder.html?type=scheduled"]');
+    const heavyCargoBtn = document.querySelector('a[href="neworder.html?type=heavy"]');
+    
+    if (expressDeliveryBtn) {
+        expressDeliveryBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'neworder.html?type=express';
+        });
+    }
+    
+    if (scheduledDeliveryBtn) {
+        scheduledDeliveryBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'neworder.html?type=scheduled';
+        });
+    }
+    
+    if (heavyCargoBtn) {
+        heavyCargoBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'neworder.html?type=heavy';
+        });
+    }
+}// Function to set up navigation
+function setupNavigation() {
+    // Navigation links in header
+    const navLinks = document.querySelectorAll('.nav-links li a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && href !== '#') {
+                e.preventDefault();
+                window.location.href = href;
+            }
+        });
+    });
+    
+    // Quick action cards navigation
+    const actionCards = document.querySelectorAll('.action-card');
+    actionCards.forEach(card => {
+        card.addEventListener('click', function(e) {
+            e.preventDefault();
+            const href = this.getAttribute('href');
+            if (href) {
+                window.location.href = href;
+            }
+        });
+    });
+    
+    // Footer navigation links
+    const footerLinks = document.querySelectorAll('.footer-links a');
+    footerLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && href !== '#') {
+                e.preventDefault();
+                window.location.href = href;
+            }
+        });
+    });
+}document.addEventListener('DOMContentLoaded', function() {
+    // Mobile Navigation Toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (hamburger) {
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('mobile-active');
+        });
+    }
+    
+    // User Profile Dropdown Toggle
+    const userProfile = document.querySelector('.user-profile');
+    const profileDropdown = document.querySelector('.profile-dropdown');
+    
+    if (userProfile) {
+        userProfile.addEventListener('click', function(e) {
+            e.stopPropagation();
+            profileDropdown.classList.toggle('active');
+        });
+        
+        // Close dropdown when clicking elsewhere
+        document.addEventListener('click', function() {
+            if (profileDropdown.classList.contains('active')) {
+                profileDropdown.classList.remove('active');
+            }
+        });
+    }
+    
+    // Package Tracking Form Submission
+    const trackingForm = document.querySelector('.tracking-form');
+    
+    if (trackingForm) {
+        trackingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const trackingNumber = document.getElementById('tracking-number').value.trim();
+            
+            if (trackingNumber) {
+                // Simulate tracking functionality
+                showTrackingResult(trackingNumber);
+            } else {
+                showTrackingError('Please enter a valid tracking number');
+            }
+        });
+    }
+    
+    // Handle Quick Actions
+    handleQuickActions();
+    
+    // Order Actions Handlers
+    setupOrderActionHandlers();
+    
+    // Notification System
+    initNotificationSystem();
+    
+    // Handle all page navigation
+    setupNavigation();
+    
+    // Check for URL parameters (like tracking numbers or return from order placement)
+    handleUrlParams();
+});
+
+// Function to display tracking results
+function showTrackingResult(trackingNumber) {
+    // Get the widget content where results will be displayed
+    const trackingWidget = document.querySelector('.widget:nth-child(2) .widget-content');
+    
+    // Check if tracking number exists in our "database"
+    const trackingData = getTrackingData(trackingNumber);
+    
+    if (!trackingData) {
+        showTrackingError('Tracking number not found. Please check and try again.');
+        return;
+    }
+    
+    // Create tracking result HTML
+    let statusClass = '';
+    switch(trackingData.status) {
+        case 'In Transit':
+            statusClass = 'status-in-transit';
+            break;
+        case 'Delivered':
+            statusClass = 'status-delivered';
+            break;
+        case 'Scheduled':
+            statusClass = 'status-scheduled';
+            break;
+        default:
+            statusClass = '';
+    }
+    
+    const resultHTML = `
+        <div class="tracking-result">
+            <div class="tracking-header">
+                <h4>Package #${trackingNumber}</h4>
+                <span class="${statusClass}">${trackingData.status}</span>
+            </div>
+            <div class="tracking-details">
+                <div class="tracking-info">
+                    <p><strong>Service:</strong> ${trackingData.service}</p>
+                    <p><strong>From:</strong> ${trackingData.from}</p>
+                    <p><strong>To:</strong> ${trackingData.to}</p>
+                    <p><strong>Date:</strong> ${trackingData.date}</p>
+                </div>
+                <div class="tracking-timeline">
+                    ${generateTrackingTimeline(trackingData.timeline)}
+                </div>
+            </div>
+            <button class="primary-btn" onclick="resetTrackingForm()">Track Another Package</button>
+        </div>
+    `;
+    
+    // Replace form with results
+    trackingWidget.innerHTML = resultHTML;
+}
+
+// Function to generate tracking timeline HTML
+function generateTrackingTimeline(timeline) {
+    if (!timeline || timeline.length === 0) {
+        return '<p>No tracking updates available.</p>';
+    }
+    
+    let timelineHTML = '<ul class="timeline-list">';
+    
+    timeline.forEach(item => {
+        timelineHTML += `
+            <li class="timeline-item ${item.active ? 'active' : ''}">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h5>${item.status}</h5>
+                    <p>${item.date} - ${item.time}</p>
+                    <p>${item.location}</p>
+                    <p>${item.description}</p>
+                </div>
+            </li>
+        `;
+    });
+    
+    timelineHTML += '</ul>';
+    return timelineHTML;
+}
+
+// Function to display tracking error
+function showTrackingError(message) {
+    const trackingInput = document.getElementById('tracking-number');
+    const errorElement = document.createElement('div');
+    errorElement.className = 'error-message';
+    errorElement.textContent = message;
+    
+    // Remove any existing error message
+    const existingError = trackingInput.parentNode.querySelector('.error-message');
+    if (existingError) {
+        existingError.remove();
+    }
+    
+    // Add new error message
+    trackingInput.parentNode.appendChild(errorElement);
+    
+    // Highlight input field
+    trackingInput.classList.add('error');
+    
+    // Remove error after 3 seconds
+    setTimeout(() => {
+        const errorToRemove = trackingInput.parentNode.querySelector('.error-message');
+        if (errorToRemove) {
+            errorToRemove.remove();
+        }
+        trackingInput.classList.remove('error');
+    }, 3000);
+}
+
+// Function to reset tracking form
+function resetTrackingForm() {
+    const trackingWidget = document.querySelector('.widget:nth-child(2) .widget-content');
+    trackingWidget.innerHTML = `
+        <form class="tracking-form">
+            <div class="input-with-icon">
+                <i class="fas fa-search"></i>
+                <input type="text" id="tracking-number" placeholder="Enter your tracking number">
+            </div>
+            <button type="submit" class="primary-btn">Track Package</button>
+        </form>
+    `;
+    
+    // Re-attach event listener to the new form
+    const newTrackingForm = document.querySelector('.tracking-form');
+    if (newTrackingForm) {
+        newTrackingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const trackingNumber = document.getElementById('tracking-number').value.trim();
+            
+            if (trackingNumber) {
+                showTrackingResult(trackingNumber);
+            } else {
+                showTrackingError('Please enter a valid tracking number');
+            }
+        });
+    }
+}
+
+// Mock function to get tracking data
+function getTrackingData(trackingNumber) {
+    // This is a mock database - in a real app, this would be an API call
+    const mockData = {
+        'DEL-12345': {
+            status: 'In Transit',
+            service: 'Express Delivery',
+            from: 'Jakarta Pusat',
+            to: 'Jakarta Selatan',
+            date: '15 May, 2025',
+            timeline: [
+                {
+                    status: 'Order Placed',
+                    date: '15 May, 2025',
+                    time: '08:30 AM',
+                    location: 'Jakarta Pusat',
+                    description: 'Package has been registered in our system.',
+                    active: true
+                },
+                {
+                    status: 'Picked Up',
+                    date: '15 May, 2025',
+                    time: '10:15 AM',
+                    location: 'Jakarta Pusat',
+                    description: 'Package has been picked up by courier.',
+                    active: true
+                },
+                {
+                    status: 'In Transit',
+                    date: '15 May, 2025',
+                    time: '11:45 AM',
+                    location: 'Jakarta',
+                    description: 'Package is on the way to destination.',
+                    active: true
+                },
+                {
+                    status: 'Out for Delivery',
+                    date: '15 May, 2025',
+                    time: '- -',
+                    location: 'Jakarta Selatan',
+                    description: 'Package will be delivered soon.',
+                    active: false
+                },
+                {
+                    status: 'Delivered',
+                    date: '- -',
+                    time: '- -',
+                    location: 'Jakarta Selatan',
+                    description: 'Package has been delivered.',
+                    active: false
+                }
+            ]
+        },
+        'DEL-12344': {
+            status: 'Delivered',
+            service: 'Heavy Cargo',
+            from: 'Surabaya',
+            to: 'Malang',
+            date: '12 May, 2025',
+            timeline: [
+                {
+                    status: 'Order Placed',
+                    date: '12 May, 2025',
+                    time: '09:00 AM',
+                    location: 'Surabaya',
+                    description: 'Package has been registered in our system.',
+                    active: true
+                },
+                {
+                    status: 'Picked Up',
+                    date: '12 May, 2025',
+                    time: '11:30 AM',
+                    location: 'Surabaya',
+                    description: 'Package has been picked up by courier.',
+                    active: true
+                },
+                {
+                    status: 'In Transit',
+                    date: '12 May, 2025',
+                    time: '01:15 PM',
+                    location: 'Surabaya',
+                    description: 'Package is on the way to destination.',
+                    active: true
+                },
+                {
+                    status: 'Out for Delivery',
+                    date: '12 May, 2025',
+                    time: '04:30 PM',
+                    location: 'Malang',
+                    description: 'Package will be delivered soon.',
+                    active: true
+                },
+                {
+                    status: 'Delivered',
+                    date: '12 May, 2025',
+                    time: '05:45 PM',
+                    location: 'Malang',
+                    description: 'Package has been delivered.',
+                    active: true
+                }
+            ]
+        },
+        'DEL-12343': {
+            status: 'Scheduled',
+            service: 'Scheduled Delivery',
+            from: 'Bandung',
+            to: 'Jakarta Barat',
+            date: '10 May, 2025',
+            timeline: [
+                {
+                    status: 'Order Placed',
+                    date: '10 May, 2025',
+                    time: '02:00 PM',
+                    location: 'Bandung',
+                    description: 'Delivery has been scheduled.',
+                    active: true
+                },
+                {
+                    status: 'Scheduled',
+                    date: '20 May, 2025',
+                    time: 'Between 09:00 AM - 12:00 PM',
+                    location: 'Bandung to Jakarta Barat',
+                    description: 'Delivery is scheduled for this date.',
+                    active: true
+                }
+            ]
+        }
+    };
+    
+    return mockData[trackingNumber] || null;
+}
+
+// Function to set up order action handlers
+function setupOrderActionHandlers() {
+    // Track button functionality
+    const trackButtons = document.querySelectorAll('.btn-track');
+    trackButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const orderId = this.getAttribute('href').split('=')[1];
+            document.getElementById('tracking-number').value = orderId;
+            document.querySelector('.tracking-form').dispatchEvent(new Event('submit'));
+            
+            // Scroll to tracking results
+            document.querySelector('.widget:nth-child(2)').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+    
+    // Repeat order functionality
+    const repeatButtons = document.querySelectorAll('.btn-repeat');
+    repeatButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const row = this.closest('tr');
+            const orderId = row.cells[0].textContent;
+            const serviceType = row.cells[2].textContent;
+            
+            // Show confirmation dialog
+            showConfirmation(`Would you like to repeat order ${orderId} as ${serviceType}?`, () => {
+                // Redirect to the order form with pre-filled data
+                window.location.href = `neworder.html?repeat=${orderId}`;
+            });
+        });
+    });
+    
+    // Edit scheduled delivery functionality
+    const editButtons = document.querySelectorAll('.btn-edit');
+    editButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const row = this.closest('tr');
+            const orderId = row.cells[0].textContent;
+            
+            // Redirect to the order form with the existing order data
+            window.location.href = `neworder.html?edit=${orderId}`;
+        });
+    });
+    
+    // Cancel scheduled delivery functionality
+    const cancelButtons = document.querySelectorAll('.btn-cancel');
+    cancelButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const row = this.closest('tr');
+            const orderId = row.cells[0].textContent;
+            
+            // Show confirmation dialog
+            showConfirmation(`Are you sure you want to cancel order ${orderId}?`, () => {
+                // Simulate cancellation
+                showNotification('Order successfully cancelled', 'success');
+                
+                // Update status visually
+                const statusCell = row.cells[3].querySelector('span');
+                statusCell.className = '';
+                statusCell.classList.add('status-cancelled');
+                statusCell.textContent = 'Cancelled';
+                
+                // Remove edit and cancel buttons
+                row.cells[6].querySelector('.btn-edit').style.display = 'none';
+                row.cells[6].querySelector('.btn-cancel').style.display = 'none';
+            });
+        });
+    });
+    
+    // View All Orders link
+    const viewAllLink = document.querySelector('.view-all');
+    if (viewAllLink) {
+        viewAllLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = '#';
+        });
+    }
+}
+
+// Confirmation dialog function
+function showConfirmation(message, confirmCallback) {
+    // Check if a dialog already exists and remove it
+    const existingDialog = document.querySelector('.confirmation-dialog');
+    if (existingDialog) {
+        existingDialog.remove();
+    }
+    
+    // Create confirmation dialog
+    const dialog = document.createElement('div');
+    dialog.className = 'confirmation-dialog';
+    dialog.innerHTML = `
+        <div class="confirmation-content">
+            <p>${message}</p>
+            <div class="confirmation-buttons">
+                <button class="btn-confirm">Confirm</button>
+                <button class="btn-cancel">Cancel</button>
+            </div>
+        </div>
+    `;
+    
+    // Add dialog to page
+    document.body.appendChild(dialog);
+    
+    // Add event listeners
+    dialog.querySelector('.btn-confirm').addEventListener('click', function() {
+        dialog.remove();
+        if (typeof confirmCallback === 'function') {
+            confirmCallback();
+        }
+    });
+    
+    dialog.querySelector('.btn-cancel').addEventListener('click', function() {
+        dialog.remove();
+    });
+    
+    // Close when clicking outside
+    dialog.addEventListener('click', function(e) {
+        if (e.target === dialog) {
+            dialog.remove();
+        }
+    });
+}
+
+// Notification system
+function initNotificationSystem() {
+    // Create notification container if it doesn't exist
+    let notificationContainer = document.querySelector('.notification-container');
+    if (!notificationContainer) {
+        notificationContainer = document.createElement('div');
+        notificationContainer.className = 'notification-container';
+        document.body.appendChild(notificationContainer);
+    }
+}
+
+// Function to show notifications
+function showNotification(message, type = 'info', duration = 3000) {
+    const notificationContainer = document.querySelector('.notification-container');
+    
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    
+    // Create icon based on type
+    let icon = '';
+    switch(type) {
+        case 'success':
+            icon = '<i class="fas fa-check-circle"></i>';
+            break;
+        case 'error':
+            icon = '<i class="fas fa-exclamation-circle"></i>';
+            break;
+        case 'warning':
+            icon = '<i class="fas fa-exclamation-triangle"></i>';
+            break;
+        default:
+            icon = '<i class="fas fa-info-circle"></i>';
+    }
+    
+    // Add content to notification
+    notification.innerHTML = `
+        <div class="notification-icon">${icon}</div>
+        <div class="notification-message">${message}</div>
+        <div class="notification-close"><i class="fas fa-times"></i></div>
+    `;
+    
+    // Add to container
+    notificationContainer.appendChild(notification);
+    
+    // Add close functionality
+    notification.querySelector('.notification-close').addEventListener('click', function() {
+        notification.classList.add('hiding');
+        setTimeout(() => {
+            notification.remove();
+        }, 300); // Match transition duration in CSS
+    });
+    
+    // Auto remove after duration
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.classList.add('hiding');
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 300); // Match transition duration in CSS
+        }
+    }, duration);
+    
+    // Show with animation
+    setTimeout(() => {
+        notification.classList.add('visible');
+    }, 10);
+}
+
+// New Delivery button functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const newDeliveryBtn = document.querySelector('.dashboard-actions .primary-btn');
+    if (newDeliveryBtn) {
+        newDeliveryBtn.addEventListener('click', function() {
+            window.location.href = 'neworder.html';
+        });
+    }
+    
+    // Handle navigation to different pages
+    setupNavigation();
+});
+</script>
+</body>
+</html>
